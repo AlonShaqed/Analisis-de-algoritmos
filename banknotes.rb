@@ -1,13 +1,13 @@
 #! /usr/bin/ruby2.5
 
-class Array
-	def * array
+class Array # Overload native array class
+	def * array # Overload * operator over arrays
 		_r = Array.new
-		if array.is_a? Array and array.length == length
+		if array.is_a? Array and array.length == length # If other is array
 			(0 ... length).each do |i|
-				_r.append(at(i) * array.at(i))
+				_r.append(at(i) * array.at(i)) # Each element is multiplied by its counterpart
 			end
-			_r
+			_r # return new array
 		elsif array.is_a? Numeric
 			_r = map {|a| array * a}
 		end
